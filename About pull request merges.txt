@@ -1,0 +1,22 @@
+You can merge pull requests by retaining all the commits in a feature branch, squashing all commits into a single commit, or by rebasing individual commits from the head branch onto the base branch.
+
+Rebase and merge your pull request commits
+When you select the Rebase and merge option on a pull request on GitHub.com, all commits from the topic branch (or head branch) are added onto the base branch individually without a merge commit. In that way, the rebase and merge behavior resembles a fast-forward merge by maintaining a linear project history. However, rebasing achieves this by re-writing the commit history on the base branch with new commits.
+
+The rebase and merge behavior on GitHub deviates slightly from git rebase. Rebase and merge on GitHub will always update the committer information and create new commit SHAs, whereas git rebase outside of GitHub does not change the committer information when the rebase happens on top of an ancestor commit. For more information about git rebase, see git-rebase in the Git documentation.
+
+To rebase and merge pull requests, you must have write permissions in the repository, and the repository must allow rebase merging.
+
+For a visual representation of git rebase, see The "Git Branching - Rebasing" chapter from the Pro Git book.
+
+You aren't able to automatically rebase and merge on GitHub.com when:
+
+The pull request has merge conflicts.
+Rebasing the commits from the base branch into the head branch runs into conflicts.
+Rebasing the commits is considered "unsafe," such as when a rebase is possible without merge conflicts but would produce a different result than a merge would.
+If you still want to rebase the commits but can't rebase and merge automatically on GitHub.com you must:
+
+Rebase the topic branch (or head branch) onto the base branch locally on the command line
+Resolve any merge conflicts on the command line.
+Force-push the rebased commits to the pull request's topic branch (or remote head branch).
+Anyone with write permissions in the repository, can then merge the changes using the rebase and merge button on GitHub.com.
