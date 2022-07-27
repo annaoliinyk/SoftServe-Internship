@@ -34,8 +34,7 @@ select A.vendor_name as 'First vendor name',
 				group by A.province_id, A.city
 				order by A.province_id, A.city;
 
-
-				-- 5
+-- 5
 -- for patients
 select Pr.province_name, Pa.city, count(Pa.city)
 from patients Pa
@@ -61,7 +60,7 @@ select P.province_name,
 			    on P.province_id = V.province_id
 			group by P.province_id;
 
-			-- 6
+-- 6
 -- for vendors
  select A.vendor_id, C.province_name 
   from vendors A
