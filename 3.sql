@@ -1,6 +1,8 @@
-SELECT DISTINCT Pr.province_name, Pa.city
- FROM patients Pa
- JOIN provinces Pr
-  ON Pa.province_id = Pr.province_id
- ORDER BY Pr.province_name;
+SELECT DISTINCT 
+  pr.province_name, 
+  pa.city
+ FROM patients pa
+  JOIN provinces pr
+   ON pa.province_id = pr.province_id
+ ORDER BY pr.province_name;
 
