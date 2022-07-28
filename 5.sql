@@ -1,30 +1,40 @@
+-- Show all unique cities in one province
 -- for patients
-select Pr.province_name, Pa.city, count(Pa.city)
- from patients Pa
- join provinces Pr 
-  on Pa.province_id = Pr.province_id
- group by Pa.city
- having count(Pa.city) is 1;
+SELECT
+  pr.province_name, 
+  pa.city, 
+  COUNT(pa.city)
+ FROM patients pa
+ JOIN provinces pr 
+  ON pa.province_id = pr.province_id
+ GROUP BY pa.city
+ HAVING count(pa.city) IS 1;
 
 -- for vendors
-select Pr.province_name, V.city, count(V.city)
- from vendors V
- join provinces Pr
-  on V.province_id = Pr.province_id
- group by V.city
- having count(V.city) is 1;
+SELECT
+  pr.province_name, 
+  v.city, 
+  COUNT(v.city)
+ FROM vendors v
+ JOIN provinces pr
+  ON v.province_id = pr.province_id
+ GROUP BY v.city
+ HAVING COUNT(v.city) IS 1;
 
 -- with count of unique cities for vendors
-select P.province_name, 
-  (select count(*)
-	    from
-	     (select province_id, count(city)
-		       from vendors
-		      group by city
-		      having count(city) is 1)
-	   group by province_id) as 'n_unique_cities'
- from vendors V 
-  join provinces P
-   on P.province_id = V.province_id
- group by P.province_id;
-
+SELECT
+  p.province_name, 
+  (SELECT
+	      COUNT(*)
+	     FROM
+	       (SELECT
+		          province_id,
+			          COUNT(city)
+				         FROM vendors
+					        GROUP BY city
+						        HAVING COUNT(city) IS 1)
+						    GROUP BY province_id) AS 'number_unique_cities'
+					  FROM vendors v
+					   JOIN provinces p
+					    ON p.province_id = v.province_id
+					  GROUP BY p.province_id;
