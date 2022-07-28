@@ -27,3 +27,4 @@ select P.province_name,
   join provinces P
    on P.province_id = V.province_id
  group by P.province_id;
+
