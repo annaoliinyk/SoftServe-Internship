@@ -1,3 +1,4 @@
+-- Show all patients from Ontario
 SELECT
   *
  FROM patients
