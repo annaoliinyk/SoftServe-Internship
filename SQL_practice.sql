@@ -5,7 +5,7 @@ where province_id is "ON";
 
 
 -- 2
-select Pr.province_name, count(Pa.patient_id) as 'Total count of patients'
+select Pr.province_name, count(Pa.patient_id) as 'total_count'
 from patients Pa
  join provinces Pr 
  on Pa.province_id = Pr.province_id
@@ -21,12 +21,12 @@ order by Pr.province_name;
 
 
 -- 4
-select A.vendor_name as 'First vendor name',
+select A.vendor_name as 'first_vendor',
   case
 	   when B.vendor_name = A.vendor_name
 		    then ''
 			   else B.vendor_name
-				  end as 'Second vendor name',
+				  end as 'second_vendor',
 				  A.province_id, A.city
 				from vendors A
 				 cross join vendors B
@@ -54,7 +54,7 @@ select P.province_name,
   ( select count(*) from
 	     (select province_id, count(city) from vendors group by city having count(city) is 1)
 	                     group by province_id
-			  ) as 'Number on unique cities in province'
+			  ) as 'n_unique_cities'
 			from vendors V 
 			  join provinces P
 			    on P.province_id = V.province_id
