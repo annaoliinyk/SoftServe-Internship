@@ -1,12 +1,10 @@
-select A.vendor_name as '1st_vendor', case
-    when B.vendor_name = A.vendor_name then ''
-	    else B.vendor_name
-		    end as '2nd_vendor',
-		      A.province_id, A.city
-		 from vendors A
-		    cross join vendors B
-		    on A.city = B.city 
-		     and A.province_id = B.province_id
-		 group by A.province_id, A.city
-		 order by A.province_id, A.city;
+-- Show all vendors in the same city and province
+SELECT 
+  v.vendor_name, 
+  p.province_name,
+  v.city
+ FROM vendors v
+  JOIN provinces p
+   ON v.province_id = p.province_id
+ ORDER BY v.province_id, v.city
 
