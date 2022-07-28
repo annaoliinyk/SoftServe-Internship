@@ -1,6 +1,8 @@
-SELECT Pr.province_name, count(Pa.patient_id) AS 'total_count'
- FROM patients Pa
- JOIN provinces Pr 
-  ON Pa.province_id = Pr.province_id
- GROUP BY Pa.province_id;
+SELECT 
+  pr.province_name,
+  COUNT(pa.patient_id) AS 'total_count'
+ FROM patients pa
+  JOIN provinces pr 
+   ON pa.province_id = pr.province_id
+ GROUP BY pa.province_id;
 
