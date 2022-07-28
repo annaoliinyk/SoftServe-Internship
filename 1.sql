@@ -1,4 +1,5 @@
-SELECT *
+SELECT
+  *
  FROM patients
-where province_id is "ON";
+ WHERE province_id is "ON";
 
