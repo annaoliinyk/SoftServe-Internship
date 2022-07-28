@@ -1,3 +1,4 @@
+-- Show the list of cities in each province
 SELECT DISTINCT 
   pr.province_name, 
   pa.city
